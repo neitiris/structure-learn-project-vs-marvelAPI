@@ -25,6 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from '../services/authservice';
 import { ApiService } from '../services/api';
 import { LoginPageModule } from './login-page';
+import { MarvelModule } from './marvel';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -62,6 +63,7 @@ const APP_PROVIDERS = [
      */
     ...environment.showDevModule ? [ DevModuleModule ] : [],
     LoginPageModule,
+    MarvelModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.

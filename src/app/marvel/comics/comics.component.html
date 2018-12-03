@@ -1,0 +1,27 @@
+<div class="comics__container">
+  <header class="comics_header">
+    <img  class="logo" src="../../../assets/img/marvel/logo_marvel.png" alt="">
+    <button class="logout" (click)="quit()">
+      Log Out
+    </button>
+  </header>
+  <main class="main">
+    <div class="filter">
+      <ul class="filter_comics_list">
+        <li class="filter_comics_item">
+
+        </li>
+      </ul>
+    </div>
+    <div class="comics_list-container">
+      <ul class="comics__list">
+        <li class="comics__list-item" *ngFor="let item of comicsList">
+          <a class="comics__item-link" href="{{item.href}}">
+            <img class="comics__item-img" src="{{item.src}}">
+            <p class="comics_descr">{{item.name}}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </main>
+</div>

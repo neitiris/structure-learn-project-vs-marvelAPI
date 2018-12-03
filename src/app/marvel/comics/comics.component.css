@@ -1,0 +1,91 @@
+/*GENERAL*/
+* {
+  font-family: "Comic Sans MS";
+}
+.comics__container{
+  margin: auto;
+  width: 100%;
+  background: url("../../../assets/img/marvel/avenger_comics_background.png") fixed;
+}
+/*HEADER*/
+.comics_header{
+  height: 110px;
+  width: 100%;
+  background: rgba(34, 38, 42, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo{
+  width: 200px;
+  margin-left: 50px;
+}
+.logout{
+  margin-right: 30px;
+  height: 30px;
+  border-radius: 5px;
+  color: white;
+  background: red;
+  border: none;
+  font-weight: bold;
+}
+.logout:hover{
+  box-shadow: 0 8px 40px -1px rgba(0,0,0,1);
+  transition: .2s ease-in-out;
+  cursor: pointer;
+}
+/*COMICS LIST*/
+.filter_comics{
+
+}
+.comics_list-container{
+  display: flex;
+  padding: 30px 0;
+  text-align: center;
+}
+.comics__list{
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+.comics__list-item{
+  width: 20%;
+  list-style: none;
+  display: inline-block;
+  margin: 0 15px 15px;
+
+}
+.comics__item-img{
+  width: 100%;
+}
+.comics__item-link{
+  text-decoration: none;
+  text-align: center;
+  color: white;
+  font-family: Comic Sans MS, serif;
+  text-shadow:
+    -0   -2px 0   #000000,
+    0   -2px 0   #000000,
+    -0    2px 0   #000000,
+    0    2px 0   #000000,
+    -2px -0   0   #000000,
+    2px -0   0   #000000,
+    -2px  0   0   #000000,
+    2px  0   0   #000000,
+    -1px -2px 0   #000000,
+    1px -2px 0   #000000,
+    -1px  2px 0   #000000,
+    1px  2px 0   #000000,
+    -2px -1px 0   #000000,
+    2px -1px 0   #000000,
+    -2px  1px 0   #000000,
+    2px  1px 0   #000000,
+    -2px -2px 0   #000000,
+    2px -2px 0   #000000,
+    -2px  2px 0   #000000,
+    2px  2px 0   #000000,
+    -2px -2px 0   #000000,
+    2px -2px 0   #000000,
+    -2px  2px 0   #000000,
+    2px  2px 0   #000000;
+}

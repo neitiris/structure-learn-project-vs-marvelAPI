@@ -10,5 +10,6 @@ export const ROUTES: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'detail', loadChildren: './+detail#DetailModule'},
   { path: 'barrel', loadChildren: './+barrel#BarrelModule'},
+  { path: 'marvel', loadChildren: './marvel#MarvelModule'},
   { path: '**',    component: NoContentComponent },
 ];

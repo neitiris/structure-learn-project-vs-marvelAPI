@@ -18,7 +18,7 @@ export const ROOT_SELECTOR = 'app';
     './app.component.css'
   ],
   template: `
-    <nav class="nav">
+    <nav class="nav" style="display: none">
       <a [routerLink]=" ['./'] "
         routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
         Index

@@ -1,0 +1,10 @@
+<div class="marvel-entry-page__container">
+  <ul class="entry-page__list">
+    <li class="entry-page__list-item" *ngFor="let button of marvelButtons">
+      <a class="entry-page__item-link" href="{{button.href}}">
+        <img  class="entry-page__item-img" src="{{button.src}}">
+        <h3 class="entry-page__item-text">{{button.text}}</h3>
+      </a>
+    </li>
+  </ul>
+</div>
