@@ -1,0 +1,106 @@
+<div class="vertical_border"></div>
+<div class="horizontal_border"></div>
+<div class="home-container">
+  <header class="header">
+    <img class="background_img" src="./assets/img/masthead.png">
+    <div class="header_content">
+      <h1 class="header__title">f_ck</h1>
+    </div>
+    <div class="header_sub_content">
+      <p class="date">01 AUGUST 2015</p>
+      <h2 class="header__subtitle">ARE YOU ARE IN THE MARKET FOR A COMPUTER?</h2>
+      <h3 class="header__description">
+        According to research firm Frost & Sullivan,
+        the estimated sizeof the North American used test and measurement
+      </h3>
+    </div>
+  </header>
+  <main class="main">
+    <div class="resent__block">
+      <img class="resent__block_img" src="../../assets/img/rectangle_red_art.png" alt="">
+      <h1 class="block_title">
+        Is It Frosting Or Is It Icing
+      </h1>
+      <div class="resent_items__container">
+        <ul class="resent_items__list">
+          <li class="resent_items__list_item" *ngFor="let item of resentItems">
+            <img class="resent_img" src="{{item.img}}">
+            <p class="resent_description">{{item.descr}}</p>
+            <button class="plus-button"><fa-icon [icon]="faPlusIcon"></fa-icon></button>
+          </li>
+        </ul>
+      </div>
+    </div>
+   <div class="blog_block">
+     <img class="background_img blog_background" src="./assets/img/black_base.png" alt="">
+     <div class="blog_links">
+       <a class="blog_link" href="">BLOG</a> <p class="slash">/</p> <p>LOREM ISPUM DOLOR</p>
+     </div>
+     <div class="blog_content">
+       <ul class="blog__list">
+         <li class="blog__title_and_header">
+           <h1 class="blog__title">Booking A Holiday Tour Or Vacation In Egypt</h1>
+           <h2 class="block_description">
+             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+             dolore magna</h2>
+         </li>
+         <li class="blog_details" *ngFor="let blog of blogTexts">
+           <p>{{blog.text}}</p>
+           <p>{{blog.text2}}</p>
+         </li>
+       </ul>
+     </div>
+     <div class="news_article">
+       <ul class="article__list">
+         <li class="article_block" *ngFor="let art of newsArticles">
+           <img src="{{art.img}}" alt="">
+           <h1 class="article_title">{{art.title}}</h1>
+           <p class="art_descr">{{art.descr}}</p>
+           <div class="auth_and_more">
+            <p class="art_author"><fa-icon class="tag_icon" [icon]="faLabelIcon"></fa-icon>{{art.author}}</p>
+           <a href="{{art.href}}" class="read_more_art"> > </a>
+           </div>
+         </li>
+       </ul>
+     </div>
+   </div>
+  </main>
+  <footer class="footer">
+    <img class="background_img footer_background" src="./assets/img/bottom_head.png" alt="">
+    <div class="footer_img_container">
+      <div class="header_content footer_title">
+        <h1 class="header__title">b__lls</h1>
+      </div>
+      <div class="header_sub_content footer_sub_content">
+        <p class="date">01 AUGUST 2015</p>
+        <h2 class="header__subtitle">THE BASIC OF WESTERN ASTROLOGY EXPLAINED</h2>
+        <h3 class="header__description">
+          According to research firm Frost & Sullivan,
+          the estimated sizeof the North American used test and measurement
+        </h3>
+      </div>
+    </div>
+    <div class="footer_container">
+     <div class="text_container">
+       <p class="footer_text">
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+         magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+         aliquip ex ea commodo consequat.
+       </p>
+       <p class="footer_text">
+         Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+       </p>
+     </div>
+      <div class="feedback">
+        <a class="social" href=""><fa-icon [icon]="faFacebookIcon"></fa-icon></a>
+        <a class="social" href=""><fa-icon [icon]="faTwitterIcon"></fa-icon></a>
+        <a class="social" href=""><fa-icon [icon]="faInstagrammIcon"></fa-icon></a>
+        <div class="email_input">
+          <!--<p>Sign up for our new newsletter</p>-->
+          <input type="text" class="email_input" placeholder="Your email address">
+          <button class="submit_btn"> > </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

@@ -1,0 +1,14 @@
+<div class="login-container">
+  <div class="login-form-container">
+    <form
+      #signinForm
+      class="login-form">
+      <h1 class="login_title">Admin page</h1>
+      <h2 class="login_sub-title">Sign in</h2>
+      <input type="email" class="lInput" [(ngModel)]="user.email"  placeholder="Email" name="email">
+      <input type="password" class="lInput" [(ngModel)]="user.password" placeholder="Password" name="password">
+      <button class="btn sign-in__btn" (click)="auth(user)">Sign In</button>
+    </form>
+    <button class="btn sign-out__btn" (click)="quit()">Sign Out</button>
+  </div>
+</div>

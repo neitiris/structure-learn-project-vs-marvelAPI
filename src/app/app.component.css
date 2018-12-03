@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,400i');
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+html, body{
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a.active {
+  background-color: gray;
+}
+.nav{
+  position: absolute;
+  z-index: 60;
+  top: 21%;
+  left: 5%;
+}
