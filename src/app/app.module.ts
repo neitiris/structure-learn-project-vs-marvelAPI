@@ -24,6 +24,7 @@ import '../styles/headings.css';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthService } from '../services/authservice';
 import { ApiService } from '../services/api';
+import { MarvelApiService } from '../services/marvel-api';
 import { LoginPageModule } from './login-page';
 import { MarvelModule } from './marvel';
 // Application wide providers
@@ -75,6 +76,7 @@ const APP_PROVIDERS = [
     HttpClient,
     ApiService,
     AuthService,
+    MarvelApiService
   ]
 })
 export class AppModule {}

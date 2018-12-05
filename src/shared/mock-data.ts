@@ -10,45 +10,46 @@ export const MARVELBUTTONS = [
     text: 'MARVEL COMICS'
   }
 ];
-export const COMICSLIST = [
+export const COMICSLIST = [];
+export const COMICSFILTER = [
   {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
+    link: '',
+    name: 'Series'
   },
   {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
+    link: '',
+    name: 'Charters'
   },
   {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
+    link: '',
+    name: 'Creators'
   },
   {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
+    link: '',
+    name: 'EVENT'
   }
 ];
+export const CHARTERSFILTER = [];
+export const CHARTERSLIST = [];
+export const COMICSLISTOPTIONS: any = {
+  searchItems: [
+    { title: 'First Name', value: 'firstName' },
+    { title: 'Last Name', value: 'lastName' },
+    { title: 'Email', value: 'email' },
+    { title: 'Company Name', value: 'companyName' },
+    { title: 'Description', value: 'description' },
+    { title: 'Phone Number 1', value: 'phoneNumber1' },
+    { title: 'Phone Number 2', value: 'phoneNumber2' },
+  ],
+  paginationItemsSelector: [ 10, 20, 30 ],
+  searchValue: '',
+  count: '',
+  tableItemsAmount: 15,
+  pages: 0,
+  urlParams: '',
+  checkedAll: false,
+  activePage: 1,
+  searchKey: 'email',
+  sortKey: 'id',
+  sortDirection: 1 // 1 === Ascent, 2 === Descent
+};
