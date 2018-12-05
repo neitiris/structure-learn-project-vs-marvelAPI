@@ -9,7 +9,10 @@
     <div class="filter">
       <ul class="filter_comics_list">
         <li class="filter_comics_item">
-
+          <p class="filter_comics-link filter_comics-text">Browse By</p>
+        </li>
+        <li class="filter_comics_item" *ngFor="let filter of comicsFilters">
+          <a class="filter_comics-link" href="{{filter.link}}">{{filter.name}}</a>
         </li>
       </ul>
     </div>

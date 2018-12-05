@@ -1,0 +1,7 @@
+.heroes_container{
+  background: url("../../../assets/img/marvel/avengers-backgrounds.jpg") fixed;
+  background-size: 100%;
+  height: 100vh;
+  width: 100%;
+
+}

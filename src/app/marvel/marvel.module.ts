@@ -5,13 +5,15 @@ import { MarvelComponent } from './marvel.component';
 import { routes } from './marvel.routes';
 import { RouterModule } from '@angular/router';
 import { ComicsComponent } from './comics/comics.component';
+import { ChartersComponent } from './charters/charters.component';
 
 console.log('`Detail` bundle loaded asynchronously');
 
 @NgModule({
   declarations: [
     MarvelComponent,
-    ComicsComponent
+    ComicsComponent,
+    ChartersComponent
   ],
   imports: [
     CommonModule,

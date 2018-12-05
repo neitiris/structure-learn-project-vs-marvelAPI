@@ -34,10 +34,23 @@
   transition: .2s ease-in-out;
   cursor: pointer;
 }
-/*COMICS LIST*/
-.filter_comics{
-
+/*Filter*/
+.filter_comics_list{
+  display: flex;
+  justify-content: center;
 }
+.filter_comics_item{
+  list-style: none;
+}
+.filter_comics-link{
+  text-decoration: none;
+  color: black;
+  margin: 0 10px;
+}
+.filter_comics-text{
+  color: saddlebrown;
+}
+/*COMICS LIST*/
 .comics_list-container{
   display: flex;
   padding: 30px 0;
@@ -53,7 +66,10 @@
   list-style: none;
   display: inline-block;
   margin: 0 15px 15px;
-
+}
+.comics__list-item:hover{
+  box-shadow: 0 10px 35px 0 rgba(0,0,0,0.75);
+  transition: 0.2s ease-in-out;
 }
 .comics__item-img{
   width: 100%;
