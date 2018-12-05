@@ -15,27 +15,26 @@ import { ComicsService } from '../../../services/comics-service';
 export class ComicsComponent implements OnInit {
   public comicsList = COMICSLIST;
   public comicsFilters = COMICSFILTER;
-  public comicsService = ComicsService;
   public comicsListOptions = COMICSLISTOPTIONS;
-  public takeList = this.comicsService.getComics();
   constructor(
     private authservice: AuthService,
+    private cService: ComicsService
   ) {}
   public ngOnInit() {
-    this.getUsers();
+    this.getComics();
   }
   /**
    * request to backend for users list
    */
-  public getUsers() {
+  public getComics() {
     this.comicsListOptions.urlParams = `?page=${this.comicsListOptions.activePage}&limit=${this.comicsListOptions.tableItemsAmount}` +
       `&order={"${this.comicsListOptions.sortKey}":${this.comicsListOptions.sortDirection}}` +
       `&where={"${this.comicsListOptions.searchKey}":"${this.comicsListOptions.searchValue}"}`;
     console.log(this.comicsListOptions.urlParams);
-    this.comicsService.getComics(this.comicsListOptions.urlParams).subscribe(
+    this.cService.getComics(this.comicsListOptions.urlParams).subscribe(
       (resp: any) => {
         console.log('getUsers resp', resp);
-        this.comicsService = resp.rows;
+        this.cService = resp.rows;
         this.comicsListOptions.count = resp.count;
         this.comicsListOptions.pages =  Math.ceil(((+this.comicsListOptions.count) / this.comicsListOptions.tableItemsAmount));
         console.log('count', this.comicsListOptions.count);
