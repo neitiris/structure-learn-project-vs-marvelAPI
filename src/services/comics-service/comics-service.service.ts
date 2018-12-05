@@ -16,6 +16,7 @@ export class ComicsService {
    * @returns {Observable<any>}
    */
   public getComics(params?: string): Observable<any> {
+    console.log('getComics', this.api.get(`${this.path}${params || ''}`));
     return this.api.get(`${this.path}${params || ''}`);
   }
   public getComicsById(id: number | string): Observable<any> {

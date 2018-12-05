@@ -10,48 +10,7 @@ export const MARVELBUTTONS = [
     text: 'MARVEL COMICS'
   }
 ];
-export const COMICSLIST = [
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  },
-  {
-    href: '',
-    src: './assets/img/marvel/comics.png',
-    name: 'MARVEL COMICS',
-  }
-];
+export const COMICSLIST = [];
 export const COMICSFILTER = [
   {
     link: '',

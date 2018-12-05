@@ -18,10 +18,10 @@
     </div>
     <div class="comics_list-container">
       <ul class="comics__list">
-        <li class="comics__list-item" *ngFor="let item of comicsList">
-          <a class="comics__item-link" href="{{item.href}}">
-            <img class="comics__item-img" src="{{item.src}}">
-            <p class="comics_descr">{{item.name}}</p>
+        <li class="comics__list-item" *ngFor="let comics of comicsImages">
+          <a class="comics__item-link" href="{{comics.detailURL}}">
+            <img class="comics__item-img" src="{{comics.img}}">
+            <p class="comics_descr">{{comics.title}}</p>
           </a>
         </li>
       </ul>

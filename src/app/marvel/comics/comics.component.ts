@@ -16,6 +16,7 @@ export class ComicsComponent implements OnInit {
   public comicsList = COMICSLIST;
   public comicsFilters = COMICSFILTER;
   public comicsListOptions = COMICSLISTOPTIONS;
+  public comicsImages = [];
   constructor(
     private authservice: AuthService,
     private cService: ComicsService
@@ -27,22 +28,36 @@ export class ComicsComponent implements OnInit {
    * request to backend for users list
    */
   public getComics() {
-    this.comicsListOptions.urlParams = `?page=${this.comicsListOptions.activePage}&limit=${this.comicsListOptions.tableItemsAmount}` +
-      `&order={"${this.comicsListOptions.sortKey}":${this.comicsListOptions.sortDirection}}` +
-      `&where={"${this.comicsListOptions.searchKey}":"${this.comicsListOptions.searchValue}"}`;
-    console.log(this.comicsListOptions.urlParams);
+    // this.comicsListOptions.urlParams = `?limit=${this.comicsListOptions.tableItemsAmount}`;
+    // console.log(this.comicsListOptions.urlParams);
     this.cService.getComics(this.comicsListOptions.urlParams).subscribe(
       (resp: any) => {
         console.log('getUsers resp', resp);
-        this.cService = resp.rows;
-        this.comicsListOptions.count = resp.count;
-        this.comicsListOptions.pages =  Math.ceil(((+this.comicsListOptions.count) / this.comicsListOptions.tableItemsAmount));
-        console.log('count', this.comicsListOptions.count);
+        this.comicsList = resp.data.results;
+        this.comicsListOptions.count = resp.data.count;
+        this.takeDetails(this.comicsList);
+        // this.comicsListOptions.pages =  Math.ceil(((+this.comicsListOptions.count) / this.comicsListOptions.tableItemsAmount));
+        // console.log('count', this.comicsListOptions.count);
       },
       (err: any) => {
         console.log('err', err);
       },
     );
+  }
+  public takeDetails(comicsList) {
+    console.log('comicsList', comicsList);
+    for (const comics of comicsList) {
+      if (comics.images.length > 0) {
+        this.comicsImages.push({
+            img: comics.images[0].path + '.' + comics.images[0].extension,
+            title: comics.title,
+            creators: comics.creators,
+            detailURL: comics.detail
+          }
+        );
+      }
+    }
+    console.log(this.comicsImages);
   }
   public quit() {
     this.authservice.logOutFunk();
