@@ -1,0 +1,65 @@
+<div class="table_container">
+  <div class="table-box">
+    <div class="search-userlist">
+      <select id="search-type-select" (change)=searchUserTag($event.target.value) >
+        <option *ngFor="let searchItem of tableOptions.searchItems" [value]="searchItem.value">by {{searchItem.title}}</option>
+      </select>
+      <input type="text" placeholder="Search..." (keyup)="searchUserBy($event.target.value)">
+    </div>
+    <h4 *ngIf="!usersList || !usersList.length">No results to show</h4>
+    <table class="user_table" *ngIf="usersList && usersList.length">
+      <thead class="table_head">
+      <tr class="table_row">
+        <th class="table_head_th"><input type="checkbox" (click)="check()" [checked]="tableOptions.checkedAll"></th>
+        <th
+          class="table_head_th"
+          *ngFor="let headItem of tableOptions.headerItems"
+          (click)="sortTable(headItem.value)"
+        >
+          {{headItem.title}}
+          <i
+            *ngIf="tableOptions.sortKey === headItem.value"
+            class="fas fa-arrow-up"
+            [ngClass]="{'angle-180':tableOptions.sortDirection === 1}"
+          >
+          </i>
+        </th>
+        <th class="table_head_th">Edit</th>
+        <th class="table_head_th">Delete</th>
+      </tr>
+      </thead>
+      <tbody class="table_body">
+      <tr class="table_row" *ngFor="let item of usersList">
+        <td class="table_row-item"><input type="checkbox" [checked]="item.checked" class="checkbox" (click)="check(item)"/></td>
+        <td class="table_row-item">{{item.id}}</td>
+        <td class="table_row-item">{{item.firstName}}</td>
+        <td class="table_row-item">{{item.email}}</td>
+        <td class="table_row-item">{{item.companyName}}</td>
+        <td class="table_row-item">{{item.createdAt}}</td>
+        <td class="table_row-item"><button class="editCl">
+          <i class="fa fa-edit"></i></button></td>
+        <td class="table_row-item">
+          <!--<button class="deleteCl" (click)="deleteUserData(this.item.id)" >-->
+          <!--<i class="fa fa-trash"></i></button></td>-->
+      </tr>
+      </tbody>
+    </table>
+    <div class="pagination_vs_btns-container">
+      <div class="pagination">
+        <select (change)= chooseShowed($event.target.value)>
+          <option *ngFor="let onPage of tableOptions.paginationItemsSelector" [value]="onPage" [selected]="onPage === tableOptions.tableItemsAmount">{{onPage}}</option>
+        </select>
+        <button class="button" (click)="paginate('first')"><<</button>
+        <button class="button" (click)="paginate(-1)"><</button>
+        <span> {{tableOptions.activePage}} of {{tableOptions.pages}} pages </span>
+        <button class="button" (click)="paginate(1)">></button>
+        <button class="button" (click)="paginate('last')">>></button>
+      </div>
+      <div class="btns">
+        <button class="button cButton">Create User</button>
+        <button class="button dButton">Delete Marked Users</button>
+      </div>
+    </div>
+  </div>
+  <!--End of Table with list from backend-->
+</div>
