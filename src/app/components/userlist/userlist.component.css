@@ -39,8 +39,4 @@
   cursor: pointer;
 }
 .table_container{
-  display: flex;
-  margin-top: 100px;
-  justify-content: center;
-  width: 100%;
 }

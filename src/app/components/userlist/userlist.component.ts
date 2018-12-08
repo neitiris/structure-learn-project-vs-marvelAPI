@@ -1,5 +1,9 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import {
+  Component, EventEmitter,
+  OnInit,
+  Output
+} from '@angular/core';
 import { UserService } from '../../../services/userservice/';
 
 @Component({
@@ -8,7 +12,7 @@ import { UserService } from '../../../services/userservice/';
   styleUrls: ['./userlist.component.css']
 })
 export class UserlistComponent implements OnInit {
-
+  @Output() public editId = new EventEmitter();
   public tableOptions: any = {
     headerItems: [
       { title: 'Id', value: 'id' },
@@ -53,7 +57,8 @@ export class UserlistComponent implements OnInit {
    * request to backend for users list
    */
   public getUsers() {
-    this.tableOptions.urlParams = `?page=${this.tableOptions.activePage}&limit=${this.tableOptions.tableItemsAmount}` +
+    this.tableOptions.urlParams =
+      `?page=${this.tableOptions.activePage}&limit=${this.tableOptions.tableItemsAmount}` +
       `&order={"${this.tableOptions.sortKey}":${this.tableOptions.sortDirection}}` +
       `&where={"${this.tableOptions.searchKey}":"${this.tableOptions.searchValue}"}`;
     console.log(this.tableOptions.urlParams);
@@ -62,7 +67,8 @@ export class UserlistComponent implements OnInit {
         console.log('getUsers resp', resp);
         this.usersList = resp.rows;
         this.tableOptions.count = resp.count;
-        this.tableOptions.pages =  Math.ceil(((+this.tableOptions.count) / this.tableOptions.tableItemsAmount));
+        this.tableOptions.pages =
+          Math.ceil(((+this.tableOptions.count) / this.tableOptions.tableItemsAmount));
         console.log('this.usersList', this.usersList);
         console.log('count', this.tableOptions.count);
       },
@@ -84,7 +90,8 @@ export class UserlistComponent implements OnInit {
       this.usersList = this.usersList.map((u: any) => {
         if (u.id === item.id) {
           u.checked = !u.checked;
-          // Uncheck general checkbox as it can't be checked if any of 'checked' differs from rest of items
+          // Uncheck general checkbox as it can't be
+          // checked if any of 'checked' differs from rest of items
           this.tableOptions.checkedAll = false;
         }
         return u;
@@ -165,8 +172,12 @@ export class UserlistComponent implements OnInit {
   public sortTable(key: string) {
     console.log('key', key);
     this.tableOptions.sortDirection =
-      key === this.tableOptions.sortKey ? this.tableOptions.sortDirection * -1 : this.tableOptions.sortDirection;
+      key === this.tableOptions.sortKey ?
+        this.tableOptions.sortDirection * -1 : this.tableOptions.sortDirection;
     this.tableOptions.sortKey = key;
     this.getUsers();
+  }
+  public openEdit(id) {
+    this.editId.emit(id);
   }
 }

@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
 import { UserlistComponent } from '../components/';
 import { UserEditComponent } from './useredit/';
+import { UserManageComponent } from '../components/';
 
 console.log('`Admin` bundle loaded asynchronously');
 
@@ -13,7 +14,8 @@ console.log('`Admin` bundle loaded asynchronously');
   declarations: [
     AdminComponent,
     UserEditComponent,
-    UserlistComponent
+    UserlistComponent,
+    UserManageComponent
   ],
   imports: [
     CommonModule,
@@ -21,12 +23,13 @@ console.log('`Admin` bundle loaded asynchronously');
     RouterModule.forChild(routes)
   ],
   providers: [
-    UserlistComponent
+    UserlistComponent,
+    UserManageComponent
   ]
 })
 export class AdminModule {
   public static routes = routes;
   constructor() {
-    console.log('`Login` module initialized');
+    console.log('`Admin` module initialized');
   }
 }

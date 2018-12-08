@@ -36,7 +36,7 @@
         <td class="table_row-item">{{item.email}}</td>
         <td class="table_row-item">{{item.companyName}}</td>
         <td class="table_row-item">{{item.createdAt}}</td>
-        <td class="table_row-item"><button class="editCl">
+        <td class="table_row-item"><button class="editCl" (click)="openEdit(this.item.id)">
           <i class="fa fa-edit"></i></button></td>
         <td class="table_row-item">
           <!--<button class="deleteCl" (click)="deleteUserData(this.item.id)" >-->

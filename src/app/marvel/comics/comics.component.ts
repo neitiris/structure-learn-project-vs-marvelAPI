@@ -36,7 +36,9 @@ export class ComicsComponent implements OnInit {
         this.comicsList = resp.data.results;
         this.comicsListOptions.count = resp.data.count;
         this.takeDetails(this.comicsList);
-        // this.comicsListOptions.pages =  Math.ceil(((+this.comicsListOptions.count) / this.comicsListOptions.tableItemsAmount));
+        // add if HERE!!!
+        // this.comicsListOptions.pages = Math.ceil(((+this.comicsListOptions.count) /
+        // this.comicsListOptions.tableItemsAmount));
         // console.log('count', this.comicsListOptions.count);
       },
       (err: any) => {
@@ -44,7 +46,7 @@ export class ComicsComponent implements OnInit {
       },
     );
   }
-  public takeDetails(comicsList) {
+  public takeDetails(comicsList: any[]) {
     console.log('comicsList', comicsList);
     for (const comics of comicsList) {
       if (comics.images.length > 0) {

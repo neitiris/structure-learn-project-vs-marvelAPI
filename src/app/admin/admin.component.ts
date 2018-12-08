@@ -31,7 +31,10 @@ export class AdminComponent implements OnInit {
       // Iterate through menu items
       // Compare clicked menu item 'id' and change it's 'opened' property to reverse boolean value
       // All other menu items 'opened' set to false. Closing any menu item opened.
-      this.menuItems.forEach((m: any) => item.id === m.id ? m.opened = !m.opened :  m.opened = false);
+      this.menuItems.forEach(
+        (m: any) => item.id === m.id ?
+          m.opened = !m.opened :  m.opened = false
+      );
     }
   }
 
@@ -40,7 +43,10 @@ export class AdminComponent implements OnInit {
    * @param childItem
    */
   public menuChildClicked(childItem: any) {
-    console.log('menuChildClicked childItem', childItem, ' clicked. Do any action you need here. For example redirect.');
+    console.log(
+      'menuChildClicked childItem', childItem,
+      ' clicked. Do any action you need here. For example redirect.'
+    );
   }
   public quit() {
     this.authservice.logOutFunk();

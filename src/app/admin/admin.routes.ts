@@ -7,7 +7,6 @@ export const routes = [
     children: [
       // {path: 'dashboard', component:  },
       {path: 'userlist', component: UserEditComponent },
-      // {path: 'manageuser/:id', component: \ },
     ],
     // canActivate: [ AuthGuardService ]
   },
