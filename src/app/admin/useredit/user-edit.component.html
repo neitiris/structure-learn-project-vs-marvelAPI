@@ -1,0 +1,4 @@
+<div class="users_manage__container">
+  <component-userlist></component-userlist>
+  <component-manage-user *ngIf="!showEdit" (editId)="userId"></component-manage-user>
+</div>

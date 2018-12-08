@@ -6,6 +6,7 @@ import { NoContentComponent } from './no-content';
 export const ROUTES: Routes = [
   { path: '',      component: HomeComponent },
   { path: 'login', loadChildren: './login-page#LoginPageModule' },
+  { path: 'admin', loadChildren: './admin#AdminModule'},
   { path: 'home',  component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'detail', loadChildren: './+detail#DetailModule'},

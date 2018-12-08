@@ -27,6 +27,8 @@ import { ApiService } from '../services/api';
 import { MarvelApiService } from '../services/marvel-api';
 import { LoginPageModule } from './login-page';
 import { MarvelModule } from './marvel';
+import { AdminModule } from './admin';
+import { UserService } from '../services/userservice';
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
@@ -52,6 +54,7 @@ const APP_PROVIDERS = [
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    FontAwesomeModule,
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
@@ -64,7 +67,8 @@ const APP_PROVIDERS = [
      */
     ...environment.showDevModule ? [ DevModuleModule ] : [],
     LoginPageModule,
-    MarvelModule
+    MarvelModule,
+    AdminModule
   ],
   /**
    * Expose our Services and Providers into Angular's dependency injection.
@@ -76,7 +80,8 @@ const APP_PROVIDERS = [
     HttpClient,
     ApiService,
     AuthService,
-    MarvelApiService
+    MarvelApiService,
+    UserService
   ]
 })
 export class AppModule {}
