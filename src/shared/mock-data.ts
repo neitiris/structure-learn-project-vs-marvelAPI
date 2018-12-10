@@ -1,3 +1,15 @@
+import {
+  faCalendarAlt,
+  faChartPie,
+  faCopy,
+  faEdit,
+  faEnvelope, faFolder,
+  faLaptop,
+  faTachometerAlt,
+  faTh,
+  faThList
+} from '@fortawesome/free-solid-svg-icons';
+
 export const MARVELBUTTONS = [
   {
     href: '/marvel/charters',
@@ -54,20 +66,217 @@ export const COMICSLISTOPTIONS: any = {
   sortDirection: 1 // 1 === Ascent, 2 === Descent
 };
 export const MENUITEMS: any[] = [
-  {ico: 'fas fa-tachometer-alt', header: 'Dashboard', button: ['User List', 'Dashboard2']},
-  {ico: 'far fa-copy', header: 'Layout Options', button: ['Top Navigation', 'Boxed', 'Fixed', 'Collapsed Sidebar']},
-  {ico: 'fas fa-th', header: 'Widgets', button: ['Widgets']},
-  {ico: 'fas fa-chart-pie', header: 'Charts', button: ['ChartsJS', 'Morris', 'Flot', 'Inline Charts']},
-  {ico: 'fas fa-laptop', header: 'UI Elements', button: ['General', 'Icons', 'Buttons', 'Sliders', 'Timeline', 'Modals']},
-  {ico: 'fas fa-edit', header: 'Forms', button: ['General Elements', 'Advanced Elements', 'Editors']},
-  {ico: 'fas fa-th-list', header: 'Tables', button: ['Simple Tables', 'Data Tables']},
-  {ico: 'fas fa-calendar-alt', header: 'Calendar', button: ['Calendar']},
-  {ico: 'fas fa-envelope', header: 'Mailbox', button: ['Inbox', 'Compose', 'Read']},
-  {ico: 'fas fa-folder', header: 'Examples', button: ['Invoice', 'Profile', 'Login', 'Register', 'Lockscreen', '404 Error']},
-  {ico: 'fas fa-reply-all', header: 'Multilevel', button: ['Level1', 'Level2', 'Level3']},
-  {ico: 'fas fa-tachometer-alt', header: 'Documentation'},
-  {ico: 'fas fa-tachometer-alt', header: 'Important'},
-  {ico: 'fas fa-tachometer-alt', header: 'Warnings'},
-  {ico: 'fas fa-tachometer-alt', header: 'Information'},
-  {ico: 'fas fa-tachometer-alt', header: 'Premium Templates'},
+  {
+    ico: faTachometerAlt,
+    header: 'Dashboard',
+    button: [
+      {
+        title: 'User List',
+        href: '/userlist'
+      },
+      {
+        title: 'Dashboard2',
+        href: ''
+      }
+    ]
+  },
+  {
+    ico: faCopy,
+    header: 'Layout Options',
+    button: [
+      {
+        title: 'Top Navigation',
+        href: ''
+      },
+      {
+        title: 'Boxed',
+        href: ''
+      },
+      {
+        title: 'Fixed',
+        href: ''
+      },
+      {
+        title: 'Collapsed Sidebar',
+        href: ''
+      }
+    ]
+  },
+  {
+    ico: faTh,
+    header: 'Widgets',
+    button: [
+      {
+        title: 'Widgets',
+        href: ''
+      }
+    ]
+  },
+  {
+    ico: faChartPie,
+    header: 'Charts',
+    button: [
+      {
+        title: 'ChartsJS',
+        href: ''
+      },
+      {
+        title: 'Morris',
+        href: ''
+      },
+      {
+        title: 'Flot',
+        href: ''
+      },
+      {
+        title: 'Inline Charts',
+        href: ''
+      },
+    ]
+  },
+  {
+    ico: faLaptop,
+    header: 'UI Elements',
+    button: [
+      {
+        title: 'General',
+        href: ''
+      },
+      {
+        title: 'Icons',
+        href: ''
+      },
+      {
+        title: 'Buttons',
+        href: ''
+      },
+      {
+        title: 'Sliders',
+        href: ''
+      },
+      {
+        title: 'Timeline',
+        href: ''
+      },
+      {
+        title: 'Modals',
+        href: ''
+      },
+    ]
+  },
+  {
+    ico: faEdit,
+    header: 'Forms',
+    button: [
+      {
+        title: 'General Elements',
+        href: ''
+      },
+      {
+        title: 'Advanced Elements',
+        href: ''
+      },
+      {
+        title: 'Editors',
+        href: ''
+      }
+    ]
+  },
+  {
+    ico: faThList,
+    header: 'Tables',
+    button: [
+      {
+        title: 'Simple Tables',
+        href: ''
+      },
+      {
+        title: 'Data Tables',
+        href: ''
+      }
+    ]
+  },
+  {
+    ico: faCalendarAlt,
+    header: 'Calendar',
+    button: [
+      {
+        title: 'Calendar',
+        href: ''
+      }
+    ]
+  },
+  {
+    ico: faEnvelope,
+    header: 'Mailbox',
+    button: [
+      {
+        title: 'Inbox',
+        href: ''
+      },
+      {
+        title: 'Compose',
+        href: ''
+      },
+      {
+        title: 'Read',
+        href: ''
+      }
+    ]
+  },
+  {
+    ico: faFolder,
+    header: 'Examples',
+    button: [
+      {
+        title: 'Invoice',
+        href: ''
+      },
+      {
+        title: 'Login',
+        href: ''
+      },
+      {
+        title: 'Register',
+        href: ''
+      },
+      {
+        title: 'Lockscreen',
+        href: ''
+      },
+      {
+        title: '404 Error',
+        href: ''
+      },
+      {
+        title: 'Profile',
+        href: ''
+      }
+    ]
+  },
+  {
+    ico: faTachometerAlt,
+    header: 'Documentation',
+    href: ''
+  },
+  {
+    ico: faTachometerAlt,
+    header: 'Important',
+    href: ''
+  },
+  {
+    ico: faTachometerAlt,
+    header: 'Warnings',
+    href: ''
+  },
+  {
+    ico: faTachometerAlt,
+    header: 'Information',
+    href: ''
+  },
+  {
+    ico: faTachometerAlt,
+    header: 'Home',
+    href: '/'
+  },
 ];

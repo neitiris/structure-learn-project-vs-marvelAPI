@@ -7,6 +7,7 @@ import { AdminComponent } from './admin.component';
 import { UserlistComponent } from '../components/';
 import { UserEditComponent } from './useredit/';
 import { UserManageComponent } from '../components/';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 console.log('`Admin` bundle loaded asynchronously');
 
@@ -20,7 +21,8 @@ console.log('`Admin` bundle loaded asynchronously');
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FontAwesomeModule
   ],
   providers: [
     UserlistComponent,

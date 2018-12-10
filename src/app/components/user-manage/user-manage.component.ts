@@ -46,7 +46,7 @@ export class UserManageComponent implements OnInit {
     }
   }
   // route to admin dashboard
-  public goBack() {
+  public hideBtn() {
     this.router.navigate(['admin', 'dashboard']);
   }
   // Delete user data from backend

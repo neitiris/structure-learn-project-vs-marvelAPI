@@ -4,14 +4,49 @@ import { Router } from '@angular/router';
 import {
   MENUITEMS
 } from '../../shared/mock-data';
-
+import {
+  faEnvelope,
+  faBell,
+  faFlag,
+  faCogs,
+  faSearch,
+  faCircle,
+} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  public user: string;
   public menuItems = MENUITEMS;
+  public faCogsIcon = faCogs;
+  public faSearchIcon = faSearch;
+  public faCircleIcon = faCircle;
+  public headerLinks = [
+    {
+      href: '',
+      ico: faEnvelope
+    },
+    {
+      href: '',
+      ico: faBell
+    },
+    {
+      href: '',
+      ico: faFlag
+    }
+  ];
+  public dropdownList = [
+    {
+      href: '',
+      text: 'Link 1'
+    },
+    {
+      href: '',
+      text: 'Link 2'
+    }
+  ];
   constructor(
     public authservice: AuthService,
     public router: Router
@@ -19,7 +54,14 @@ export class AdminComponent implements OnInit {
 
   public ngOnInit() {
     this.populateMenu();
+    this.getCurrentUser();
   }
+
+  public getCurrentUser() {
+    const localUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.user = localUser.fullname;
+  }
+
   /**
    * Change menu 'opened' property value on menu item click
    * And close any other opened menu item
@@ -62,21 +104,34 @@ export class AdminComponent implements OnInit {
       const allItems: any[] = [];
       for (let m = 0; m < this.menuItems.length; m++) {
         console.log();
-        const item: any = {
-          id: m,
-          opened: false,
-          title: this.menuItems[m].header,
-          innerItems: [],
-          icon: this.menuItems[m].ico
-        };
-        if (this.menuItems[m] && this.menuItems[m].button) {
-          for (let c = 0; c < this.menuItems[m].button.length; c++) {
-            item.innerItems.push({
-              id: 1000 * m + c,
-              title: this.menuItems[m].button[c]
-            });
+        if (!this.menuItems[m].href) {
+          const item: any = {
+            id: m,
+            opened: false,
+            title: this.menuItems[m].header,
+            innerItems: [],
+            ico: this.menuItems[m].ico,
+          };
+          if (this.menuItems[m] && this.menuItems[m].button) {
+            for (let c = 0; c < this.menuItems[m].button.length; c++) {
+              item.innerItems.push({
+                id: 1000 * m + c,
+                title: this.menuItems[m].button[c].title,
+                href: this.menuItems[m].button[c].href
+              });
+            }
+            allItems.push(item);
           }
-          allItems.push(item);
+        } else if (this.menuItems[m].href) {
+          if (this.menuItems[m].href) {
+            const item: any = {
+              id: m,
+              title: this.menuItems[m].header,
+              ico: this.menuItems[m].ico,
+              href: this.menuItems[m].href
+            };
+            allItems.push(item);
+          }
         }
       }
       this.menuItems = allItems;

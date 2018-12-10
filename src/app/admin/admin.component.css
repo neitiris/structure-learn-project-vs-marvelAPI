@@ -16,17 +16,17 @@ a, span{
 /********************************************************
                       Header
 *********************************************************/
-header{
+.header{
   width: 100%;
   height: 50px;
   background: steelblue;
   display: block;
 }
 
-header nav{
+.nav{
   float: right;
 }
-img{
+.user-img{
   vertical-align: middle;
 }
 .logo-header{
@@ -46,11 +46,12 @@ img{
 .head-btns{
   display: inline-flex;
   height: 50px;
+  align-items: center;
 }
 .head-btns-container{
   float: right;
 }
-.head-btns span{
+.header_items_container{
   margin-left: 7px;
   margin-right: 7px;
 }
@@ -209,4 +210,26 @@ img{
 .content-block {
   color: initial;
   width: calc(100% - 230px);
+}
+.list-item{
+  cursor: pointer;
+}
+.list-item .showed{
+  display: flex;
+  align-items: center;
+}
+.fa_icon{
+  padding-top: 8px;
+}
+.fa_icon_link{
+  padding: 0 8px 0 0;
+}
+.admin_status{
+  display: flex !important;
+}
+.status_icon{
+  color: #1dff1d;
+  padding-left: 5px;
+  font-size: 6px;
+  padding-top: 8px;
 }

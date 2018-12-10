@@ -1,5 +1,5 @@
 <!--Header Block-->
-<header>
+<header class="header">
   <!--Admin logo-->
   <div class="logo-header">
     <a href="" (click)="quit()">Admin</a>
@@ -9,19 +9,24 @@
   <!--Header buttons)-->
   <div class="head-btns-container">
     <div class="head-btns">
-      <a href="#" class="showed-header-btns"><span><i class="fas fa-envelope"></i></span></a>
-      <a href="#" class="showed-header-btns"><span><i class="fas fa-bell"></i></span></a>
-      <a href="#" class="showed-header-btns"><span><i class="fas fa-flag"></i></span></a>
-      <a href="#" id="img-btn">
-        <img src="http://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg" class="avatar-header-img">
-        <span>User Name</span>
+      <a *ngFor="let link of headerLinks" class="showed-header-btns" href="{{link.href}}">
+        <span class="header_items_container">
+          <fa-icon [icon]="link.ico"></fa-icon>
+        </span>
+      </a>
+      <a href="">
+        <img
+          class="avatar-header-img user-img"
+          src="http://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg">
+        <span class="header_items_container">{{this.user}}</span>
       </a>
       <div class="showed-header-btns">
-        <button class="dropbtn"><i class="fas fa-cogs"></i></button>
+        <button class="dropbtn">
+          <fa-icon [icon]="faCogsIcon"></fa-icon>
+        </button>
         <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a (click)=" quit()">Log Out</a>
+          <a *ngFor="let drop of dropdownList" href="drop.href">{{drop.text}}</a>
+          <a (click)="quit()">Log Out</a>
         </div>
       </div>
     </div>
@@ -35,13 +40,15 @@
   <aside class="sidebar">
 
     <div class="user-panel">
-      <img src="http://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg" class="avatar-img">
+      <img
+        class="avatar-img user-img"
+        src="http://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg">
       <span>
-        <i></i>
-        <a href="#">
-          <i class="fa fa-circle text-success"></i>
+        <i>{{this.user}}</i>
+        <span class="admin_status">
           <a class="text-a">Online</a>
-        </a>
+          <fa-icon class="status_icon" [icon]="faCircleIcon"></fa-icon>
+        </span>
       </span>
     </div>
     <!--Search form(Not working yet)-->
@@ -49,7 +56,14 @@
       <div class="search-block">
         <div class="search-input">
           <input type="text" placeholder="Search">
-          <span><button type="submit" class="btn btn-flat"><span><i class="fa fa-search"></i></span></button></span>
+          <span>
+            <button
+              type="submit"
+              class="btn btn-flat">
+              <span>
+                <fa-icon [icon]="faSearchIcon"></fa-icon>
+              </span>
+            </button></span>
         </div>
       </div>
     </form>
@@ -57,12 +71,38 @@
 
     <!--Navigation List-->
     <ul class="sidebar-nav-ul">
-      <li class="head-li">Main Navigation</li>
-      <li *ngFor="let menuItem of menuItems">
-        <span class="showed" (click)="menuClicked(menuItem)"><span><i class="{{menuItem.icon}}"></i>{{menuItem.title}}</span></span>
-        <ul [ngStyle]="{'height': menuItem.opened ? 30 * menuItem.innerItems.length + 'px' : 0}" class="menu-children-container">
-          <li *ngFor="let listChildren of menuItem.innerItems" (click)="menuChildClicked(listChildren)">
-            <a href="#">{{listChildren.title}}</a></li>
+      <li class="head-li">
+        <span>Main Navigation</span>
+      </li>
+      <li class="list-item" *ngFor="let menuItem of menuItems">
+        <span
+          class="showed"
+          *ngIf="!menuItem.href"
+          (click)="menuClicked(menuItem)"
+        >
+          <fa-icon class="fa_icon" [icon]="menuItem.ico"></fa-icon>
+          <span>{{menuItem.title}}</span>
+        </span>
+        <a
+          class="showed"
+           *ngIf="menuItem.href"
+           href="{{menuItem.href}}">
+          <span>
+             <fa-icon class="fa_icon fa_icon_link" [icon]="menuItem.ico"></fa-icon>
+            {{menuItem.title}}
+          </span>
+        </a>
+        <ul
+          *ngIf="!menuItem.href"
+            [ngStyle]="{'height': menuItem.opened ? 30 * menuItem.innerItems.length + 'px' : 0}"
+          class="menu-children-container">
+          <li
+            *ngFor="let listChildren of menuItem.innerItems"
+            (click)="menuChildClicked(listChildren)">
+            <a href="{{listChildren.href}}">
+              {{listChildren.title}}
+            </a>
+          </li>
         </ul>
       </li>
     </ul>
