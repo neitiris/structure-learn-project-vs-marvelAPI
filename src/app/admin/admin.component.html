@@ -2,19 +2,19 @@
 <header class="header">
   <!--Admin logo-->
   <div class="logo-header">
-    <a href="" (click)="quit()">Admin</a>
+    <a routerLink=[] (click)="quit()">Admin</a>
   </div>
   <!--End of Admin logo div-->
 
   <!--Header buttons)-->
   <div class="head-btns-container">
     <div class="head-btns">
-      <a *ngFor="let link of headerLinks" class="showed-header-btns" href="{{link.href}}">
+      <a *ngFor="let link of headerLinks" class="showed-header-btns" routerLink="{{link.href}}">
         <span class="header_items_container">
           <fa-icon [icon]="link.ico"></fa-icon>
         </span>
       </a>
-      <a href="">
+      <a routerLink=[]>
         <img
           class="avatar-header-img user-img"
           src="http://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg">
@@ -25,7 +25,7 @@
           <fa-icon [icon]="faCogsIcon"></fa-icon>
         </button>
         <div class="dropdown-content">
-          <a *ngFor="let drop of dropdownList" href="drop.href">{{drop.text}}</a>
+          <a *ngFor="let drop of dropdownList" [routerLink]=[drop.href]>{{drop.text}}</a>
           <a (click)="quit()">Log Out</a>
         </div>
       </div>
@@ -86,7 +86,7 @@
         <a
           class="showed"
            *ngIf="menuItem.href"
-           href="{{menuItem.href}}">
+           routerLink="{{menuItem.routerLink}}">
           <span>
              <fa-icon class="fa_icon fa_icon_link" [icon]="menuItem.ico"></fa-icon>
             {{menuItem.title}}
@@ -99,7 +99,7 @@
           <li
             *ngFor="let listChildren of menuItem.innerItems"
             (click)="menuChildClicked(listChildren)">
-            <a href="{{listChildren.href}}">
+            <a [routerLink]=[listChildren.href]>
               {{listChildren.title}}
             </a>
           </li>

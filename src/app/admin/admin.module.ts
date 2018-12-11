@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 import { routes } from './admin.routes';
 import { RouterModule } from '@angular/router';
 import { AdminComponent } from './admin.component';
-import { UserlistComponent } from '../components/';
 import { UserEditComponent } from './useredit/';
-import { UserManageComponent } from '../components/';
+import { UserManageComponent, UsersListComponent } from '../components/';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 console.log('`Admin` bundle loaded asynchronously');
@@ -15,7 +14,7 @@ console.log('`Admin` bundle loaded asynchronously');
   declarations: [
     AdminComponent,
     UserEditComponent,
-    UserlistComponent,
+    UsersListComponent,
     UserManageComponent
   ],
   imports: [
@@ -25,7 +24,6 @@ console.log('`Admin` bundle loaded asynchronously');
     FontAwesomeModule
   ],
   providers: [
-    UserlistComponent,
     UserManageComponent
   ]
 })

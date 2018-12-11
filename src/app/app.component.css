@@ -9,12 +9,3 @@ html, body{
   padding: 0;
 }
 
-a.active {
-  background-color: gray;
-}
-.nav{
-  position: absolute;
-  z-index: 60;
-  top: 21%;
-  left: 5%;
-}

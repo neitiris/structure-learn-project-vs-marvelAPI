@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from '../api';
+import { omit } from 'lodash';
 
 @Injectable()
 export class UserService {
@@ -36,7 +37,7 @@ export class UserService {
    * @returns {Observable<any>}
    */
   public updateUser(user: any, userId: number) {
-    return this.api.put(`${this.path}/${userId}`, user);
+    return this.api.put(`${this.path}/${userId}`, omit(user, ['id']));
   }
 
   /**

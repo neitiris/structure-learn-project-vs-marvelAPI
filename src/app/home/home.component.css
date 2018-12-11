@@ -20,6 +20,16 @@ a{
   z-index: 100;
   width: 100%;
 }
+/*NAV*/
+.nav_link.active {
+  background-color: gray;
+}
+.nav{
+  position: absolute;
+  z-index: 60;
+  top: 21%;
+  left: 5%;
+}
 /*PAGE*/
 .header{
   /*background: #cc171e;*/

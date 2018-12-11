@@ -39,6 +39,28 @@ export class HomeComponent implements OnInit {
   public faFacebookIcon = faFacebookF;
   public faTwitterIcon = faTwitter;
   public faInstagrammIcon = faInstagram;
+  public navItems = [
+    {
+      link: './',
+      text: 'Index'
+    },
+    {
+      link: './home',
+      text: 'Home'
+    },
+    {
+      link: './detail',
+      text: 'Detail'
+    },
+    {
+      link: './about',
+      text: 'About'
+    },
+    {
+      link: '/admin',
+      text: 'Admin'
+    },
+  ];
   public resentItems = [
     {
       img: './assets/img/img_list.png',

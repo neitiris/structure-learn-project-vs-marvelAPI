@@ -1,59 +1,76 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../services/userservice';
-import { Router } from '@angular/router';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
+import {
+  faArrowUp,
+  faEdit
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'user-edit',
-  templateUrl: './user-edit.component.html',
-  styleUrls: ['./user-edit.component.css']
+  selector: 'users-list',
+  templateUrl: './users-list.component.html',
+  styleUrls: ['./users-list.component.css']
 })
-export class UserEditComponent implements OnInit {
-  public editUserData: any;
+export class UsersListComponent {
+  @Input() public usersList: any[] = [];
+  @Output() public deleteUser: any = new EventEmitter();
+  @Output() public editUser: any = new EventEmitter();
+  @Output() public requestUsers: any = new EventEmitter();
+
+  public showEdit = false;
+  public faArrow = faArrowUp;
+  public faEditIcon = faEdit;
   public tableOptions: any = {
+    headerItems: [
+      { title: 'Id', value: 'id' },
+      { title: 'First Name', value: 'firstName' },
+      { title: 'Email', value: 'email' },
+      { title: 'Company Name', value: 'companyName' },
+      { title: 'Created At', value: 'createdAt' },
+    ],
+    searchItems: [
+      { title: 'First Name', value: 'firstName' },
+      { title: 'Last Name', value: 'lastName' },
+      { title: 'Email', value: 'email' },
+      { title: 'Company Name', value: 'companyName' },
+      { title: 'Description', value: 'description' },
+      { title: 'Phone Number 1', value: 'phoneNumber1' },
+      { title: 'Phone Number 2', value: 'phoneNumber2' },
+    ],
+    paginationItemsSelector: [ 5, 10, 15, 20 ],
+    searchValue: '',
     count: '',
     tableItemsAmount: 15,
+    pages: 0,
+    urlParams: '',
+    checkedAll: false,
     activePage: 1,
     searchKey: 'email',
     sortKey: 'id',
     sortDirection: 1 // 1 === Ascent, 2 === Descent
   };
-  public usersList: any[] = [];
+  public user: any = {};
   public options: any = {
     changed: false,
     isNew: true
   };
-  constructor(
-    public _user: UserService,
-    public router: Router
-  ) { }
-
-  public ngOnInit() {
-    this.getUsers();
+  constructor() {
+    console.log('UsersListComponent started.');
   }
 
   /**
-   * request to backend for users list
+   * Invoke request users list
    */
-  public getUsers(urlParams?: string) {
+  public getUsers() {
     this.tableOptions.urlParams =
       `?page=${this.tableOptions.activePage}&limit=${this.tableOptions.tableItemsAmount}` +
       `&order={"${this.tableOptions.sortKey}":${this.tableOptions.sortDirection}}` +
       `&where={"${this.tableOptions.searchKey}":"${this.tableOptions.searchValue}"}`;
-    console.log(this.tableOptions.urlParams, urlParams);
-    this._user.getUsers(urlParams || this.tableOptions.urlParams).subscribe(
-      (resp: any) => {
-        console.log('getUsers resp', resp);
-        this.usersList = resp.rows;
-        this.tableOptions.count = resp.count;
-        this.tableOptions.pages =
-          Math.ceil(((+this.tableOptions.count) / this.tableOptions.tableItemsAmount));
-        console.log('this.usersList', this.usersList);
-        console.log('count', this.tableOptions.count);
-      },
-      (err: any) => {
-        console.log('err', err);
-      },
-    );
+    console.log(this.tableOptions.urlParams);
+    this.requestUsers.next(this.tableOptions.urlParams);
   }
 
   /**
@@ -155,57 +172,13 @@ export class UserEditComponent implements OnInit {
     this.tableOptions.sortKey = key;
     this.getUsers();
   }
-  // request User by id from server
-  public requestUser(id: number) {
-    if (id) {
-      this._user.getUserById(id).subscribe(
-        (resp: any) => {
-          console.log('resp', resp);
-          if (resp && resp.data) {
-            this.editUserData = this.clone(resp.data);
-            this.options.isNew = false;
-          }
-        },
-        (err: any) => {
-          console.log('err', err);
-        }
-      );
-    }
-  }
-  // Delete user data from backend
-  public deleteUserData(id) {
-    this._user.deleteUser(id).subscribe(
-      (resp: any) => {
-        console.log('deleted');
-      },
-      (err: any) => {
-        console.log('err', err);
-      }
-    );
-  }
-  // Function try to save changes or create user to backend
-  public trySave(user: any) {
-    if (user && user.id) {
-      this._user.updateUser(user, user.id).subscribe(
-        (resp: any) => {
-          console.log('resp', resp);
-        },
-        (err: any) => {
-          console.log('err', err);
-        }
-      );
-    } else {
-      this._user.createNewUser(user).subscribe(
-        (resp: any) => {
-          console.log('resp', resp);
-        },
-        (err: any) => {
-          console.log('err', err);
-        }
-      );
-    }
-  }
-  private clone(sourceObj: any) {
-    return JSON.parse(JSON.stringify(sourceObj));
+
+  /**
+   * Invoke editing user
+   * @param id
+   */
+  public openEdit(id: any) {
+    this.editUser.next(id);
+    this.showEdit = true;
   }
 }

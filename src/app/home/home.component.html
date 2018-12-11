@@ -1,3 +1,11 @@
+<div class="nav_container">
+  <nav class="nav" >
+    <a class="nav_link" *ngFor="let item of navItems" [routerLink]=" [item.link] "
+       routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">
+      {{item.text}}
+    </a>
+  </nav>
+</div>
 <div class="vertical_border"></div>
 <div class="horizontal_border"></div>
 <div class="home-container">

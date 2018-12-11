@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../services/userservice';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'component-manage-user',
@@ -8,82 +7,33 @@ import { UserService } from '../../../services/userservice';
   styleUrls: ['./user-manage.component.css']
 })
 export class UserManageComponent implements OnInit {
-  @Input() public userId: any;
-  public user: any = {};
+  @Input() public user: any = {};
+  @Output() public saveUser = new EventEmitter<any>();
+  @Output() public closeUserComponent = new EventEmitter<any>();
+
   public userUnchanged: any = {};
   public options: any = {
     changed: false,
     isNew: true
   };
   constructor(
-    public route: ActivatedRoute,
     public router: Router,
-    public _user: UserService
   ) { }
   // Calling user details function
   public ngOnInit() {
-    console.log('ngOnInit this.route', this.route);
-    if (this.userId['id'] && this.userId['id'] !== 'newUser') {
-        this.requestUser(this.userId['id']);
-    }
+    /**
+     * Keep original user object to compare
+     */
+    this.userUnchanged = JSON.parse(JSON.stringify(this.user));
   }
-  // request User by id from server
-  public requestUser(id: any) {
-    if (id) {
-      this._user.getUserById(id).subscribe(
-        (resp: any) => {
-          console.log('resp', resp);
-          if (resp && resp.data) {
-            this.user = this.clone(resp.data);
-            this.userUnchanged = this.clone(resp.data);
-            this.options.isNew = false;
-          }
-        },
-        (err: any) => {
-          console.log('err', err);
-        }
-      );
-    }
-  }
-  // route to admin dashboard
+  // Closer this component
   public hideBtn() {
-    this.router.navigate(['admin', 'dashboard']);
+    this.closeUserComponent.next();
   }
-  // Delete user data from backend
-  public deleteUserData(id) {
-    this._user.deleteUser(id).subscribe(
-      (resp: any) => {
-        this.router.navigate(['admin', 'dashboard']);
-      },
-      (err: any) => {
-        console.log('err', err);
-      }
-    );
-  }
-  // Function try to save changes or create user to backend
-  public trySave(user: any) {
-    if (user && user.id) {
-      const changedUserData: any = this.getChanged(this.userUnchanged, this.user);
-      this._user.updateUser(changedUserData, user.id).subscribe(
-        (resp: any) => {
-          console.log('resp', resp);
-          this.router.navigate([ 'admin', 'dashboard']);
-        },
-        (err: any) => {
-          console.log('err', err);
-        }
-      );
-    } else {
-      this._user.createNewUser(user).subscribe(
-        (resp: any) => {
-          console.log('resp', resp);
-          this.router.navigate([ 'admin', 'dashboard']);
-        },
-        (err: any) => {
-          console.log('err', err);
-        }
-      );
-    }
+  public onSave() {
+    const changedData: any = this.getChanged(this.userUnchanged, this.user);
+    this.saveUser.emit(changedData);
+
   }
   // Function what create array with differense of unchanged data and changed
   public onChange() {
@@ -107,7 +57,4 @@ export class UserManageComponent implements OnInit {
     return JSON.stringify(a) === JSON.stringify(b);
   }
 
-  private clone(sourceObj: any) {
-    return JSON.parse(JSON.stringify(sourceObj));
-  }
 }

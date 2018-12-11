@@ -72,7 +72,7 @@ export const MENUITEMS: any[] = [
     button: [
       {
         title: 'User List',
-        href: '/userlist'
+        href: './userlist'
       },
       {
         title: 'Dashboard2',
@@ -257,26 +257,26 @@ export const MENUITEMS: any[] = [
   {
     ico: faTachometerAlt,
     header: 'Documentation',
-    href: ''
+    href: './'
   },
   {
     ico: faTachometerAlt,
     header: 'Important',
-    href: ''
+    href: './'
   },
   {
     ico: faTachometerAlt,
     header: 'Warnings',
-    href: ''
+    href: './'
   },
   {
     ico: faTachometerAlt,
     header: 'Information',
-    href: ''
+    href: './'
   },
   {
     ico: faTachometerAlt,
     header: 'Home',
-    href: '/'
+    href: '/home'
   },
 ];
